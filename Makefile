@@ -18,17 +18,10 @@ image:
 	$(HIDE)docker build -t $(DOCKER_IMAGE) .
 
 #
-start-dev:
-	$(HIDE)docker run --rm $(DOCKER_ENV) --hostname $(DOCKER_CONTAINER)  --name $(DOCKER_CONTAINER) \
+start.%:
+	$(HIDE)docker run $(DOCKER_ENV) --hostname $(DOCKER_CONTAINER)  --name $(DOCKER_CONTAINER) \
 	        -p 3003 \
 		-v $(PWD):/onelogin/src \
-		$(DOCKER_IMAGE)
-
-start:
-	$(HIDE)docker run --rm $(DOCKER_ENV) --hostname $(DOCKER_CONTAINER)  --name $(DOCKER_CONTAINER) \
-	        -p 3003 \
-		-v $(PWD):/onelogin/src \
-		--entrypoint /bin/bash \
 		$(DOCKER_IMAGE)
 
 enter:

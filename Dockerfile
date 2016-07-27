@@ -8,9 +8,9 @@ ENV BUNDLE_PATH=/bundle
 RUN bundle install --verbose
 
 ENV PORT 3003
+ENV RAILS_ENV development
+
 EXPOSE 3003
 
-ENV RAILS_ENV development
-ENTRYPOINT ['./bin/bundle']
-CMD ["exec"]
-CMD ["rails", "server", "-b", "0.0.0.0"]
+ENTRYPOINT ["/usr/local/bin/bundle", "exec"]
+CMD ["rails", "server", "-b0.0.0.0", "-p$PORT"]

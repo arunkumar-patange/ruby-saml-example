@@ -28,8 +28,8 @@ enter:
 	$(HIDE)docker exec -it $(DOCKER_CONTAINER) /bin/bash
 
 stop:
-	-$(HIDE)docker stop $(DOCKER_CONTAINER) $(DOCKER_CONTAINER)-portal
-	$(HIDE)docker rm $(DOCKER_CONTAINER) $(DOCKER_CONTAINER)-portal
+	-$(HIDE)docker stop $(DOCKER_CONTAINER)
+	$(HIDE)docker rm $(DOCKER_CONTAINER)
 
 clean-all:
 	#$(HIDE)read -p "This will remove images and containers, continue (y/n)?" -n 1 -r yn;

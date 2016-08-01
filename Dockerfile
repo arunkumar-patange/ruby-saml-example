@@ -13,4 +13,4 @@ ENV RAILS_ENV development
 EXPOSE 3003
 
 ENTRYPOINT ["/usr/local/bin/bundle", "exec"]
-CMD ["rails", "server", "-b0.0.0.0", "-p3003"]
+CMD ["rails", "server", "-b0.0.0.0", "-p3003", "--pid=/onelogin/server.pid"]

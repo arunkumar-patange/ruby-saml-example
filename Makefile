@@ -9,6 +9,7 @@ HIDE ?= @
 DOCKER_IMAGE ?= onelogin/ruby-saml-example
 DOCKER_CONTAINER ?= ruby-saml-example
 DOCKER_ENV ?= '-it' # development mode run interactive
+APP ?= ''
 
 -include ./registry/registry.mk
 
@@ -19,8 +20,10 @@ image:
 
 #
 start.%:
-	$(HIDE)docker run $(DOCKER_ENV) --hostname $(DOCKER_CONTAINER)  --name $(DOCKER_CONTAINER) \
+	$(HIDE)docker run --rm $(DOCKER_ENV) --hostname $(DOCKER_CONTAINER) \
 	        -p 3003 \
+	        -e app_login_id=$(APP) \
+		--link monorail-admin:app.onelogin.dev \
 		-v $(PWD):/onelogin/src \
 		$(DOCKER_IMAGE)
 

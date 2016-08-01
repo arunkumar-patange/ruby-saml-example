@@ -23,7 +23,7 @@ class Account < ActiveRecord::Base
 
     # IdP section
     idp_url = "#{Rails.configuration.idp[:idp]}:#{Rails.configuration.idp[:idp_port]}"
-    app_login_id = Rails.configuration.idp[:app_login_id]
+    app_login_id = ENV['app_login_id'] || Rails.configuration.idp[:app_login_id]
     settings.idp_entity_id                  = "http://#{idp_url}/saml/metadata/#{app_login_id}"
     settings.idp_sso_target_url             = "http://#{idp_url}/trust/saml2/http-post/sso/#{app_login_id}"
     settings.idp_slo_target_url             = "http://#{idp_url}/trust/saml2/http-redirect/slo/#{app_login_id}"
